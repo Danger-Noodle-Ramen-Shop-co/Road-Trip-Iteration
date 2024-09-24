@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  destination: "",
-  origin: "",
+  destination: '',
+  origin: '',
   step: 0,
   waypoints: [],
-  waypointStr: "",
+  waypointStr: '',
 };
 
 export const genSettingsSlice = createSlice({
-  name: "genSettings",
+  name: 'genSettings',
   initialState,
   reducers: {
     updateOrigin: (state, newOrigin) => {
@@ -28,7 +28,7 @@ export const genSettingsSlice = createSlice({
       state.waypoints = action.payload;
       state.waypointStr = state.waypoints
         .slice(0, 11)
-        .reduce((str, waypoint) => str + waypoint + "|", "&waypoints=")
+        .reduce((str, waypoint) => str + waypoint + '|', '&waypoints=')
         .slice(0, -1);
     },
 
@@ -36,7 +36,8 @@ export const genSettingsSlice = createSlice({
       state.waypoints.push(action.payload);
       state.waypointStr = state.waypoints
         .slice(0, 11)
-        .reduce((str, waypoint) => str + waypoint + "|", "&waypoints=")
+        //seperate waypoints strings using |
+        .reduce((str, waypoint) => str + waypoint + '|', '&waypoints=')
         .slice(0, -1);
     },
   },
@@ -50,3 +51,4 @@ export const {
   addWaypoint,
 } = genSettingsSlice.actions;
 export default genSettingsSlice.reducer;
+//exports the slice as a reducer

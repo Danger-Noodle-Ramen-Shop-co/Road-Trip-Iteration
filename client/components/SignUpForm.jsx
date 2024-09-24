@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  //React state to get auth info
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  //State to check if the username is already in use
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
   const [fieldsFilled, setFieldsFilled] = useState(true);
   const [errorMsgShow, setErrorMsgShow] = useState(false);
@@ -50,6 +52,7 @@ const SignUpForm = () => {
   return (
     <div>
       <h2>Sign Up</h2>
+      {/* May not need states for setUsername and setPassword, get info on form submit */}
       <form onSubmit={handleSignUp}>
         <div>
           <label htmlFor='username'>Username:</label>
