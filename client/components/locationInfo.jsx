@@ -1,45 +1,3 @@
-//map api is done, map = id, accessing all components apart via the display tutorials..
-
-//assuming front end to send request to post or get trip info -> waypoints, point of location
-//full feature: show locations you can stop at on that route (new york to boston), the restaurant, motel,
-//minimum: waypoints on the travel bar
-//david: update that state
-//i'll display that state, which is to Display location info on the front end
-
-//fetch
-//1. response data how does it look like?
-//google's destination route document to FIND WAYPOINTS DATA
-//waypoint information -> resto, motel
-
-//2. which container am i displaying
-//the display will be related to map.jsx (on map), settings.jsx(waypoints/stops)
-//waypoints is when we fetch the location info and display the content
-//there will be resto, motel, etc. info show up in the map container when user click into that specific waypoint location
-//when the user tap into that location (motel), it will show the motel's info
-//address, description, cell phone
-
-//3. my procedure
-// user stories:
-// - click that specific information - get information through response data - display the response data
-// - part 1: nearby location api to get nearby location (caution to charge)
-// - part 1: location information api to get location information
-// - part 2: response data manipulation and display display
-//      - use the react google map example to make markers
-//      - the example wont run without api key
-
-//request -> object with location info and description and etc.
-// choose one at random, choose highest rating one
-// display using tags using the map
-// advanced marker: react components i can use to make markers on the certain location
-//visual tutorials
-// https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js#0
-//market of lat,log, the place, get an object, and display, they can see.
-
-//search api:
-//limit to a small radius (.5 miles)becasuse it will return everything inside of that range
-//if >=2000-3000 data points, 20 bucks
-
-//--------
 import React from 'react';
 import Settings from 'Settings';
 
@@ -82,3 +40,56 @@ async function fetchNearbybyData() {
     console.error('error in locationInfo.jsx on Fetch Nearby Data', error);
   }
 }
+
+data.results.forEach((place) => {
+  const name = place.name;
+  const rating = place.rating;
+  const address = place.vicinity;
+  const businessStatus = place.business_status;
+  //use google photo api to fetch photos using photo reference
+  //const photoreference = place.photos? place.photos[0]: 'No Photos';
+
+});
+
+/*
+example response nearby location data is shown below in json 
+data = {
+  "html_attributions": [],
+  "results": [
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": -33.8587323,
+          "lng": 151.2100055
+        }
+      },
+      "name": "Cruise Bar",
+      "rating": 4,
+      "place_id": "ChIJi6C1MxquEmsR9-c-3O48ykI",
+      "vicinity": "Level 1, 2 and 3, Overseas Passenger Terminal, Circular Quay W, The Rocks",
+      "photos": [
+        {
+          "photo_reference": "Aap_uECvJIZuXT-uLDYm4DPbrV7gXVPeplbTWUgcOJ6rnfc4bUYCEAwPU_AmXGIaj0PDhWPbmrjQC8hhuXRJQjnA1-iREGEn7I0ZneHg5OP1mDT7lYVpa1hUPoz7cn8iCGBN9MynjOPSUe-UooRrFw2XEXOLgRJ-uKr6tGQUp77CWVocpcoG",
+          "width": 1080,
+          "height": 608
+        }
+      ]
+    },
+    {
+      "business_status": "OPERATIONAL",
+      "geometry": {
+        "location": {
+          "lat": -33.8675219,
+          "lng": 151.2016502
+        }
+      },
+      "name": "Sydney Harbour Dinner Cruises",
+      "rating": 4.8,
+      "place_id": "ChIJM1mOVTS6EmsRKaDzrTsgids",
+      "vicinity": "32 The Promenade, Sydney"
+    }
+  ],
+  "status": "OK"
+}
+*/
