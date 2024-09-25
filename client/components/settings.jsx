@@ -150,6 +150,9 @@ const Settings = () => {
   );
 };
 
+//14Ng5wZo9NNf9JEF
+// mongodb+srv://sharonpatterson808:14Ng5wZo9NNf9JEF@cluster0.dfhsj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 const styles = {
   settings: {
     display: 'flex',
