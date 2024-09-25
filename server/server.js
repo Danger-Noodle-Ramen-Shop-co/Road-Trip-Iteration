@@ -37,9 +37,6 @@ app.post('/signup', userController.createUser, (req, res) => {
 // only seems to work with :param syntax?
 //Depending on the issue, perhaps we can solve another way?
 app.get('/corsproxy/:url', async (req, res, next) => {
-  console.log('Requesting API info');
-  console.log('Req.qury contents:');
-  console.log(req.query);
   try {
     const fetch_url = `${req.query.url}?key=${
       req.query.key
