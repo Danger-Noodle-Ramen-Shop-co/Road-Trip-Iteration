@@ -54,6 +54,7 @@ const Settings = () => {
         }
       );
       const data = await response.json();
+      console.log(data);
       // console.dir(data);
       //    initialize waypoints array = []
       const waypoints = [];
