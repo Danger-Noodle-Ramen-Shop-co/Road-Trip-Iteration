@@ -11,6 +11,7 @@ const app = express();
 //Accesses URI through .env file. We will make our own URI
 const MONGO_URI = process.env.MONGO_URI;
 //Connect to the DB, show success or catch error
+console.log(MONGO_URI)
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log(`Connected to MongoDB at ${MONGO_URI}`))

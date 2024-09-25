@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const userController = {};
 
+//server/models/userModel.js
 userController.createUser = (req, res, next) => {
   const { username, password } = req.body;
   if (username && password) {
