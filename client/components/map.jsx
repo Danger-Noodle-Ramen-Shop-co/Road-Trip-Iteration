@@ -5,6 +5,8 @@ import {
   APIProvider,
   Map,
   MapCameraChangedEvent,
+  AdvancedMarker,
+  Pin,
 } from '@vis.gl/react-google-maps';
 
 /*const Map = () => {
@@ -54,13 +56,38 @@ function GoogleMap() {
     { key: 'darlingHarbour', location: { lat: -33.87488, lng: 151.1987113 } },
     { key: 'barangaroo', location: { lat: -33.8605523, lng: 151.1972205 } },
   ];
+
+  const waypoints = useSelector((state) => state.genSettings.waypoints);
+  console.log(waypoints);
   return (
     <APIProvider
       apiKey={process.env.GOOGLE_API_KEY}
       onLoad={() => console.log('Maps API has loaded.')}
     >
-      <Map mapId='bab950e9b992dd8c'></Map>
+      <Map
+        mapId='bab950e9b992dd8c'
+        defaultZoom={13}
+        defaultCenter={{ lat: -33.860664, lng: 151.208138 }}
+      >
+        <PoiMarkers pois={locations} />
+      </Map>
     </APIProvider>
+  );
+}
+
+function PoiMarkers({ pois }) {
+  return (
+    <>
+      {pois.map((poi) => {
+        <AdvancedMarker key={poi.key} position={poi.location}>
+          <Pin
+            background={'#FBBC04'}
+            glyphColor={'#000'}
+            borderColor={'#000'}
+          />
+        </AdvancedMarker>;
+      })}
+    </>
   );
 }
 

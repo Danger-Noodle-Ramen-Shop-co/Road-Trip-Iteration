@@ -6,15 +6,19 @@ import {
   updateDestination,
   updateOrigin,
   updateStep,
-  updateWaypoints,
 } from '../features/genSettings/genSettingsSlice';
 
 const Settings = () => {
   //States for tracking journey from origin to destination
-  const origin = useSelector((state) => state.genSettings.origin);
-  const destination = useSelector((state) => state.genSettings.destination);
-  const step = useSelector((state) => state.genSettings.step);
-  const waypointStr = useSelector((state) => state.genSettings.waypointStr);
+  // const origin = useSelector((state) => state.genSettings.origin);
+  // const destination = useSelector((state) => state.genSettings.destination);
+  // const step = useSelector((state) => state.genSettings.step);
+  // const waypointStr = useSelector((state) => state.genSettings.waypointStr);
+
+  const [origin, setOrigin] = useState('');//set's up local state
+  const [destination, setDestination] = useState('');
+  const [step, setStep] = useState(0);
+
   const dispatch = useDispatch();
 
   //create a reference
@@ -98,13 +102,13 @@ const Settings = () => {
 
   return (
     <div style={styles.settings}>
-      <form style={styles.top}>
+      <form style={styles.top} onSubmit={handleSubmit}>
         <label htmlFor='from'>From:</label>
         <input
           id='from'
           type='text'
           value={origin}
-          onChange={(e) => dispatch(updateOrigin(e.target.value))}
+          onChange={(e) => setOrigin(e.target.value)}
         ></input>
 
         <label htmlFor='to'>To:</label>
@@ -112,23 +116,20 @@ const Settings = () => {
           id='to'
           type='text'
           value={destination}
-          onChange={(e) => dispatch(updateDestination(e.target.value))}
+          onChange={(e) => setDestination(e.target.value)}
         ></input>
-      </form>
-
-      <form style={styles.bottom}>
         <label htmlFor='steps'>Chunk Trip By Miles:</label>
         <input
           id='steps'
           type='number'
           value={step}
-          onChange={(e) => dispatch(updateStep(e.target.value))}
+          onChange={(e) => setStep(e.target.value)}
         ></input>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            chunkRoute();
-          }}
+        <button type='submit'
+          // onClick={(e) => {//maybe switch to on submit so the state doesn't change everytime someone types so rtk querry works
+          //   e.preventDefault();
+          //   chunkRoute();
+          // }}
         >
           Find Stops
         </button>
