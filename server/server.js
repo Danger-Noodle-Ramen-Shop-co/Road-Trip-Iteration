@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const userController = require('./controllers/userController');
+const tripController = require('./controllers/tripController');
 
 const PORT = 3000;
 const app = express();
@@ -33,6 +34,9 @@ app.post('/signup', userController.createUser, (req, res) => {
   });
 });
 
+app.post('/main', (req, res) => {
+  res.status(200)
+})
 // used to try to get around broswer's cross origin issues on frontend
 // only seems to work with :param syntax?
 //Depending on the issue, perhaps we can solve another way?
