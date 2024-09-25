@@ -7,6 +7,10 @@ const userController = require('./controllers/userController');
 
 const PORT = 3000;
 const app = express();
+
+console.log('MongoDB URI: ', process.env.MONGODB_URI);
+//mongo db is logging mongo db correctly
+
 //Accesses URI through .env file. We will make our own URI
 const MONGO_URI = process.env.MONGO_URI;
 //Connect to the DB, show success or catch error
