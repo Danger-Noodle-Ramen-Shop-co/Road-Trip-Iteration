@@ -7,20 +7,23 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   devtool:
     process.env.NODE_ENV === 'production' ? false : 'eval-cheap-source-map',
   devServer: {
+    host: 'localhost',
+    port: 8080,
     static: {
       directory: path.resolve(__dirname, './client'),
-      publicPath: './',
+      publicPath: '/',
     },
     proxy: [
       {
-        context: ['/corsproxy','/login','/signup', '/mainPage'],
+        context: ['/corsproxy/', '/login', '/signup', '/mainPage'],
         target: 'http://localhost:3000',
-        // secure: false,
+        secure: false,
       },
     ],
   },
@@ -30,6 +33,9 @@ module.exports = {
     }),
     new Dotenv(),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
