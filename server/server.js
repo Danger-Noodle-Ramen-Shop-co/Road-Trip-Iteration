@@ -11,8 +11,13 @@ const app = express();
 console.log('MongoDB URI: ', process.env.MONGODB_URI);
 //mongo db is logging mongo db correctly
 
+// if (typeof MONGO_URI !== 'string') {
+//   throw new Error('MONGO_URI is not a string');
+// }
+
 //Accesses URI through .env file. We will make our own URI
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGODB_URI.toString();
+
 //Connect to the DB, show success or catch error
 mongoose
   .connect(MONGO_URI)

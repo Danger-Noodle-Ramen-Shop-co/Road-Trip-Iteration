@@ -1,3 +1,4 @@
+//page to navigate sign up and log in
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,3 +1,4 @@
+//define waypoitns, chunks of the trip
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -32,6 +33,7 @@ const Settings = () => {
     inputRef.current.value = '';
   }
 
+  //get waypointsstr will cost.
   function chunkRoute() {
     async function getData() {
       //Will need to add API key, figure out how to get
@@ -90,10 +92,8 @@ const Settings = () => {
     getData();
   }
 
-
   //14Ng5wZo9NNf9JEF
-// mongodb+srv://sharonpatterson808:14Ng5wZo9NNf9JEF@cluster0.dfhsj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
+  // mongodb+srv://sharonpatterson808:14Ng5wZo9NNf9JEF@cluster0.dfhsj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
   return (
     <div style={styles.settings}>
