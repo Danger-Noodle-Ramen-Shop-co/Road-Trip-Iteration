@@ -8,7 +8,7 @@ import { store } from './app/store';
 
 import SavedTrips from './components/savedTrips.jsx';
 import Settings from './components/settings.jsx';
-import Map from './components/map.jsx';
+import GoogleMap from './components/map.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
 import WaypointContainer from './components/WaypointContainer.jsx';
@@ -31,7 +31,7 @@ const App = () => {
 
                 <div style={styles.settingMap}>
                   <Settings />
-                  <Map />
+                  <GoogleMap />
                 </div>
 
                 <div style={styles.waypoint}>
