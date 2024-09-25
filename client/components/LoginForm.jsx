@@ -15,8 +15,8 @@ const LoginForm = () => {
     e.preventDefault();
     const formData = {
       username,
-      password
-    }
+      password,
+    };
     fetch('/login', {
       method: 'POST',
       headers: {
@@ -32,7 +32,10 @@ const LoginForm = () => {
         } else {
           if (data.message === 'Invalid information') {
             setIsPwdWrong(true);
-          } else if (data.message === 'missing data: cannot find email or password in req.body') {
+          } else if (
+            data.message ===
+            'missing data: cannot find email or password in req.body'
+          ) {
             setFieldsFilled(false);
           } else {
             setErrorMsgShow(true);
@@ -48,6 +51,10 @@ const LoginForm = () => {
   const handleSignUpClick = () => {
     navigate('/signup');
   };
+
+  function handleBypass() {
+    navigate('/mainPage');
+  }
 
   return (
     <div>
@@ -79,6 +86,7 @@ const LoginForm = () => {
       {!fieldsFilled && <p>Please fill all fields</p>}
       {errorMsgShow && <p>An error occurred. Please try again.</p>}
       <button onClick={handleSignUpClick}>Sign Up</button>
+      <button onClick={handleBypass}>BYPASS LOGIN</button>
     </div>
   );
 };

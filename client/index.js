@@ -14,6 +14,7 @@ import SignUpForm from './components/SignUpForm.jsx';
 import WaypointContainer from './components/WaypointContainer.jsx';
 
 const App = () => {
+  console.log('app started');
   return (
     <div styles={styles.background}>
       <Router>
