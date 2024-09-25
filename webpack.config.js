@@ -22,7 +22,7 @@ module.exports = {
     proxy: [
       {
         context: ['/corsproxy', '/login', '/signup', '/mainPage'],
-        target: 'http://:3000',
+        target: 'http://localhost:3000',
         // secure: false,
       },
     ],
