@@ -36,6 +36,7 @@ const Settings = () => {
     async function getData() {
       //Will need to add API key, figure out how to get
       //Fetching from the API the best directions (routes) between origin and destination and waypoints
+      console.log('Making request to server for API');
       const response = await fetch(
         `/corsproxy/directions?url=https://maps.googleapis.com/maps/api/directions/json&key=${
           process.env.GOOGLE_API_KEY
