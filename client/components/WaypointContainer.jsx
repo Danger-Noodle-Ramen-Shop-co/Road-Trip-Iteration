@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import { useGetDirectionQuery } from '../features/genSettings/apiSlice';
 import { updateWaypoints } from '../features/genSettings/genSettingsSlice';
+import SaveTripButton from './saveTripButton';
 
 
 const WaypointContainer = () => {
@@ -10,6 +11,7 @@ const WaypointContainer = () => {
   const step = useSelector((state) => state.genSettings.step);
   const waypointStr = useSelector((state) => state.genSettings.waypointStr);
   const dispatch = useDispatch();
+  
   
   
     const { data, error, isLoading } = useGetDirectionQuery({ origin, destination, waypointStr });
@@ -31,7 +33,7 @@ const WaypointContainer = () => {
       for (const leg of data.routes[0].legs) {
         for (const step of leg.steps) {
           // for each step, add its distance to the totalDist
-          totalDist += step.distance.value;
+          totalDist += step.distance.value;  
           // if totalDist is greater than chunkLength:
           if (totalDist > stepInMeters) {
             // add the startLocation (place id maybe?) from the step to our own waypoints array
@@ -59,6 +61,12 @@ const WaypointContainer = () => {
                   waypoints.map((waypoint, index) => <li key={index}>{waypoint}</li>)
                 )}
               </ul>
+              <SaveTripButton 
+                origin
+                destination
+                step
+                waypointStr
+              />
             </div>
           );
   

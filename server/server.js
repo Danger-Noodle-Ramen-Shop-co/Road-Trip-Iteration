@@ -35,7 +35,11 @@ app.post('/signup', userController.createUser, (req, res) => {
   });
 });
 
-app.post('/main', (req, res) => {
+app.post('/main', tripController.saveTrip, (req, res) => {
+  res.status(200)
+})
+
+app.get('/main', tripController.getTrip, (req, res) => {
   res.status(200)
 })
 // used to try to get around broswer's cross origin issues on frontend

@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
 //schema
-const tripSchema = mangoose.Schema({
-    
+const tripSchema = mongoose.Schema({
+    user_id: {type: Number},
+    origin: { type: String, required: true },
+    destination: {type: String, required: true},
+    step: { type: Number, required: true },
+    waypoints: { type: Array, required: true},
+
 })
 
-const savedTrips = mangoose.model('savedTrips', tripSchema)
-module.exports = savedTrips
+const Trips = mongoose.model('Trips', tripSchema)
+module.exports = Trips

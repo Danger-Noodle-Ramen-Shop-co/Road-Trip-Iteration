@@ -6,6 +6,7 @@ const initialState = {
   step: 0,
   waypoints: [],
   waypointStr: '',
+  saveCount: 0,
 };
 
 export const genSettingsSlice = createSlice({
@@ -39,6 +40,10 @@ export const genSettingsSlice = createSlice({
         //seperate waypoints strings using |
         .reduce((str, waypoint) => str + waypoint + '|', '&waypoints=')
         .slice(0, -1);
+    },
+
+    updateSaveCount: (state) => {
+      state.saveCount += 1;
     },
   },
 });

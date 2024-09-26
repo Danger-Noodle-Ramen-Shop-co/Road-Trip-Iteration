@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom';
 import { store } from './app/store';
 
 import SavedTrips from './components/savedTrips.jsx';
+import SaveTripbutton from './components/saveTripButton.jsx';
 import Settings from './components/settings.jsx';
 import GoogleMap from './components/map.jsx';
 import LoginForm from './components/LoginForm.jsx';
