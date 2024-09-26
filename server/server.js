@@ -8,7 +8,7 @@ const userController = require('./controllers/userController');
 const PORT = 3000;
 const app = express();
 
-console.log('MongoDB URI: ', process.env.MONGODB_URI);
+console.log('MongoDB URI: ', process.env.MONGO_URI);
 //mongo db is logging mongo db correctly
 
 // if (typeof MONGO_URI !== 'string') {
@@ -16,7 +16,7 @@ console.log('MongoDB URI: ', process.env.MONGODB_URI);
 // }
 
 //Accesses URI through .env file. We will make our own URI
-const MONGO_URI = process.env.MONGODB_URI.toString();
+const MONGO_URI = process.env.MONGO_URI;
 
 //Connect to the DB, show success or catch error
 mongoose

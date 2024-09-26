@@ -1,5 +1,5 @@
 //define waypoitns, chunks of the trip
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   addWaypoint,
@@ -15,7 +15,7 @@ const Settings = () => {
   // const step = useSelector((state) => state.genSettings.step);
   // const waypointStr = useSelector((state) => state.genSettings.waypointStr);
 
-  const [origin, setOrigin] = useState('');//set's up local state
+  const [origin, setOrigin] = useState(''); //set's up local state
   const [destination, setDestination] = useState('');
   const [step, setStep] = useState(0);
 
@@ -125,7 +125,8 @@ const Settings = () => {
           value={step}
           onChange={(e) => setStep(e.target.value)}
         ></input>
-        <button type='submit'
+        <button
+          type='submit'
           // onClick={(e) => {//maybe switch to on submit so the state doesn't change everytime someone types so rtk querry works
           //   e.preventDefault();
           //   chunkRoute();
